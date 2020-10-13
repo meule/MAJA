@@ -16,6 +16,9 @@ import re
 import logging
 from os import path as p
 from datetime import timedelta, datetime
+
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))  # Import relative modules
+
 from StartMaja.Common import FileSystem
 from StartMaja.Chain import AuxFile, GippFile, Product
 from StartMaja.Chain.Workplan import Workplan, Nominal, Backward, Init
@@ -187,7 +190,7 @@ class StartMaja(object):
         # Parsing configuration file
         config = cfg.ConfigParser()
         config.read(cfg_file)
-    
+
         # Maja_Inputs
         rep_work = os.path.realpath(os.path.expanduser(config.get("Maja_Inputs", "repWork")))
         if not p.isdir(rep_work):
@@ -462,7 +465,7 @@ class StartMaja(object):
         # This should never happen:
         if not workplans:
             raise ValueError("No workplans were created!")
-        
+
         return workplans
 
     def run(self):
