@@ -58,12 +58,14 @@ class MNT(object):
         if not self.raw_dem:
             self.raw_dem = tempfile.mkdtemp(prefix="raw_dem_")
         else:
-            FileSystem.create_directory(self.raw_dem)
+            if not os.path.exists(self.raw_dem):
+                FileSystem.create_directory(self.raw_dem)
         self.raw_gsw = kwargs.get("raw_gsw", None)
         if not self.raw_gsw:
             self.raw_gsw = tempfile.mkdtemp(prefix="raw_gsw_")
         else:
-            FileSystem.create_directory(self.raw_gsw)
+            if not os.path.exists(self.raw_gsw):
+                FileSystem.create_directory(self.raw_gsw)
         self.gsw_codes = self.get_gsw_codes(self.site)
         self.dem_version = kwargs.get("dem_version", None)
         self.gsw_threshold = kwargs.get("gsw_threshold", 30.)
