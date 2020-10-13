@@ -60,7 +60,5 @@ class DEM(MNT):
                              multi=True)
         return srtm_full_res
 
-    @staticmethod
-
 if __name__ == "__main__":
     pass

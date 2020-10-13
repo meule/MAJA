@@ -19,7 +19,7 @@ limitations under the License.
 
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))  # Import relative modules
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../..'))  # Import relative modules
 
 __version__ = "4.0.1"
 
