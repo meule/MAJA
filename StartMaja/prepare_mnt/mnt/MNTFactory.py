@@ -20,6 +20,7 @@ limitations under the License.
 import logging
 from StartMaja.prepare_mnt.mnt.SRTM import SRTM
 from StartMaja.prepare_mnt.mnt.EuDEM import EuDEM
+from StartMaja.prepare_mnt.mnt.DEM import DEM
 
 
 class MNTFactory:
@@ -61,6 +62,21 @@ class MNTFactory:
             self.site.res_x, self.site.res_y = 90, -90
             try:
                 return SRTM(site=self.site,
+                            **self.kwargs).to_maja_format(platform_id=self.plaform_id,
+                                                          mission_field=self.mission_field,
+                                                          mnt_resolutions=self.mnt_resolutions,
+                                                          coarse_res=self.coarse_res,
+                                                          full_res_only=self.full_res_only)
+            except ValueError as e:
+                error = e
+                logger.error(e)
+
+        if self.type_dem in ["custom"]:
+            # SRTM is distributed in 90m.
+            # Thus, all initial calculation has to be done at this resolution:
+            self.site.res_x, self.site.res_y = 10, -10
+            try:
+                return DEM(site=self.site,
                             **self.kwargs).to_maja_format(platform_id=self.plaform_id,
                                                           mission_field=self.mission_field,
                                                           mnt_resolutions=self.mnt_resolutions,
