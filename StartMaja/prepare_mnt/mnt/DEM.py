@@ -50,7 +50,7 @@ class DEM(MNT):
         dem = self.raw_dem
         # Combine to image of fixed extent
         srtm_full_res = os.path.join(self.wdir, "srtm_%sm.tif" % int(self.site.res_x))
-        ImageTools.gdal_warp(nodata, dst=srtm_full_res,
+        ImageTools.gdal_warp(dem, dst=srtm_full_res,
                              r="cubic",
                              te=self.site.te_str,
                              t_srs=self.site.epsg_str,
