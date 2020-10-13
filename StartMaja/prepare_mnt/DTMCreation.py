@@ -73,7 +73,7 @@ class DTMCreator:
 
 if __name__ == "__main__":
     import sys
-    from osgeo import gdal
+    import gdal
     assert sys.version_info > (3, 0), "Please update Python to >3.0"
     # Script runs fine with gdal >= 2.1.x
     if int(gdal.VersionInfo()) <= 2010000:
