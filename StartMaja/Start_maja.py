@@ -295,7 +295,7 @@ class StartMaja(object):
         :return: The full path to the hdr and dbl.dir. None if they're not found.
         """
 
-        regexes = ["%s%s_%s.DBL(.DIR)?$" % (AuxFile.DTMFile.get_specifiable_regex(), self.tile, nbr)
+        regexes = ["%sT%s_%s.DBL(.DIR)?$" % (AuxFile.DTMFile.get_specifiable_regex(), self.tile, nbr)
                    for nbr in AuxFile.DTMFile.mnt_version[type_dem]]
         mnt_folders = []
         for regex in regexes:
