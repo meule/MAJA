@@ -106,6 +106,7 @@ class DEMBase(object):
         handler = EarthExplorerXMLFileHandler(file_hdr)
         list_of_dbl_files = handler.get_list_of_packaged_dbl_files(True, False)
         LOGGER.info("DEMFileNames found " + str(len(list_of_dbl_files)) + " files")
+        LOGGER.info("DEMFileNames: " + str(list_of_dbl_files) )
 
         for i in range(0,len(list_of_dbl_files)):
             if list_of_dbl_files[i].split('.TIF')[-1]:
