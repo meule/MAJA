@@ -227,7 +227,7 @@ class MNT(object):
         :return: Writes the .DBL.DIR and .HDR into the specified self.dem_dir
         """
         assert len(mnt_resolutions) >= 1
-        basename = str("%s_TEST_AUX_REFDE2_%s_%s" % (platform_id, self.site.nom, str(self.dem_version).zfill(4)))
+        basename = str("%s_TEST_AUX_REFDE2_T%s_%s" % (platform_id, self.site.nom, str(self.dem_version).zfill(4)))
 
         # Get mnt data
         mnt_max_res = self.prepare_mnt()
